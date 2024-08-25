@@ -13,6 +13,9 @@
 | first_name_kana    | string        | null: false |
 | birthday           | date          | null: false |
 
+- has_many :items
+
+
 
 ## items テーブル
 
@@ -28,6 +31,11 @@
 | price               | integer   | null: false |
 | user             | reference | null: false, foreign_key: true |
 
+- belongs_to :user
+- has_one :purchase_record
+
+
+
 
 ## purchase_record テーブル
 
@@ -35,6 +43,10 @@
 | ------        | ---------- | ------------ |
 | user             | reference | null: false, foreign_key: true |
 | item       | references | null: false, foreign_key: true |
+
+- belongs_to :Item
+- has_one :shipping_addresses
+
 
 
 
@@ -50,5 +62,6 @@
 | phone_number       | string     | null: false  |
 | purchase_record | references | null: false, foreign_key: true |
 
+- belongs_to :purchase_record
 
 
