@@ -26,7 +26,7 @@
 | category_id         | integer    | null: false |
 | condition_id        | integer    | null: false |
 | shipping_fee_id     | integer    | null: false |
-| ship_from_address_id| integer    | null: false |
+| prefecture_id    | integer    | null: false |
 | shipping_day_id    | integer    | null: false |
 | price               | integer   | null: false |
 | user             | reference | null: false, foreign_key: true |
