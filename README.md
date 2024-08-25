@@ -24,7 +24,7 @@
 | condition_id        | integer    | null: false |
 | shipping_fee_id     | integer    | null: false |
 | ship_from_address_id| integer    | null: false |
-| shipping_days_id    | integer    | null: false |
+| shipping_day_id    | integer    | null: false |
 | price               | integer   | null: false |
 | user             | reference | null: false, foreign_key: true |
 
@@ -43,13 +43,12 @@
 | Column             | Type       | Options      |
 | ------             | ---------- | ------------ |
 | post_code          | string     | null: false  |
-| prefectures        | integer    | null: false  |
+| prefecture_id        | integer    | null: false  |
 | city               | string     | null: false  |
 | street_address     | string     | null: false  |
 | building_name      | string     |              |
 | phone_number       | string     | null: false  |
 | purchase_record | references | null: false, foreign_key: true |
-| user             | reference | null: false, foreign_key: true |
 
 
 
