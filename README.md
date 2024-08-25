@@ -16,6 +16,7 @@
 ### Association
 
 - has_many :items
+- has_one :purchase_record
 
 
 
@@ -31,7 +32,7 @@
 | prefecture_id    | integer    | null: false |
 | shipping_day_id    | integer    | null: false |
 | price               | integer   | null: false |
-| user             | reference | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -41,22 +42,23 @@
 
 
 
-## purchase_record テーブル
+## purchase_records テーブル
 
 | Column        | Type       | Options      |
 | ------        | ---------- | ------------ |
-| user             | reference | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
 | item       | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :item
+- belongs_to :user
 - has_one :shipping_address
 
 
 
 
-## shipping_address テーブル
+## shipping_addresses テーブル
 
 | Column             | Type       | Options      |
 | ------             | ---------- | ------------ |
