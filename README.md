@@ -1,24 +1,53 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type      | Options     |
+| ------------------ | ------    | ----------- |
+| nickname           | string    | null: false |
+| email              | string    | null: false, unique: true |
+| password           | string,int| null: false | // 
+| last_name          | string    | null: false |
+| first_name         | string    | null: false |
+| last_name_kana     | string    | null: false |
+| first_name_kana    | string    | null: false |
+| birthday           | int       | null: false |
 
-* Ruby version
 
-* System dependencies
+## items テーブル
 
-* Configuration
+| Column      | Type      | Options     |
+| ------      | ------    | ----------- |
+| item_image  | string    | null: false |
+| item_name   | string    | null: false |
+| description | text      | null: false | 
+| price       | int       | null: false |
+| user        | reference | null: false, foreign_key: true |
 
-* Database creation
 
-* Database initialization
+## purchase_record テーブル
 
-* How to run the test suite
+| Column        | Type       | Options      |
+| ------        | ---------- | ------------ |
+| purchase_name | string     | null: false  |
+| purchase_date | datetime   | null: false                    |
+| item          | references | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+## shipping_address テーブル
+
+| Column             | Type       | Options      |
+| ------             | ---------- | ------------ |
+| post_code          | int        | null: false, |
+| city               | string     | null: false, |
+| street_address     | string     | null: false, |
+| building_name      | string     | null: true,  |
+| phone_number       | int        | null: false, |
+| credit_card_number | int        | null: false, |
+| expire_date        | int        | null: false, |
+| security_code      | int        | null: false, |
+| user               | references | null: false  foreign_key: true |
+| item               | references | null: false, foreign_key: true |
+
+
