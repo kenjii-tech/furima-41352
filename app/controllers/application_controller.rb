@@ -20,7 +20,4 @@ class ApplicationController < ActionController::Base
     items_path
   end
 
-  def set_current_user
-    @current_user = current_user
-  end
 end
