@@ -14,7 +14,7 @@ const price = () => {
 
       const tax = Math.floor(price * 0.1);
 
-      const profit = price - tax;
+      const profit = Math.floor(price - tax);
 
       addTaxDom.innerHTML = tax;
       profitDom.innerHTML = profit;
