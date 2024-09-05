@@ -1,26 +1,27 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const priceInput = document.getElementById('item-price');
-  const addTaxPrice = document.getElementById('add-tax-price');
-  const profit = document.getElementById('profit');
-
-  const updatePrice = () => {
+const price = () => {
+  const priceInput = document.getElementById("item-price");
+  const addTaxDom = document.getElementById("add-tax-price");
+  const profitDom = document.getElementById("profit");
+  if (!priceInput || !addTaxDom || !profitDom) return; 
+  const calculatePrice = () => {
     const inputValue = priceInput.value;
-    const price = parseInt(inputValue, 10);
+    const price = parseInt(inputValue);
+    if (inputValue === '' || isNaN(price)) {
 
-    if (price >= 300 && price <= 9999999) {
-      const tax = Math.floor(price * 0.1);
-      addTaxPrice.textContent = tax.toLocaleString();
-      profit.textContent = Math.floor(price - tax).toLocaleString();
+      addTaxDom.innerHTML = '0';
+      profitDom.innerHTML = '0';
     } else {
-      addTaxPrice.textContent = '---';
-      profit.textContent = '---';
+
+      const tax = Math.floor(price * 0.1);
+
+      const profit = price - tax;
+
+      addTaxDom.innerHTML = tax;
+      profitDom.innerHTML = profit;
     }
   };
-
-  priceInput.addEventListener('input', (e) => {
-    e.target.value = e.target.value.replace(/[^0-9]/g, '');
-    updatePrice();
-  });
-
-  updatePrice();
-});
+  priceInput.addEventListener("input", calculatePrice);
+  calculatePrice(); // 
+};
+window.addEventListener("turbo:load", price);
+window.addEventListener("turbo:render", price);
