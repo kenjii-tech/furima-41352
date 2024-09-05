@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_current_user
 
   private
 
@@ -16,8 +15,7 @@ class ApplicationController < ActionController::Base
                                       keys: [:nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday])
   end
 
-  def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(_resource)
     items_path
   end
-
 end
