@@ -3,12 +3,12 @@ class ItemsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    # @items = Item.with_attached_image.order(created_at: :desc)
-    @items = Item.order(created_at: :desc)
+    @items = Item.with_attached_image.order(created_at: :desc)
+    # @items = Item.order(created_at: :desc)
   end
 
   def show
-    # @item = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def new
@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :image, :name, :Context, :description, :category_id, :condition_id, :shipping_fee_id, :prefecture_id,
+    params.require(:item).permit(:name, :image, :Context, :description, :category_id, :condition_id, :shipping_fee_id, :prefecture_id,
                                  :shipping_day_id, :price)
   end
 end
