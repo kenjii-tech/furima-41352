@@ -17,7 +17,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-  ¥ <%= number_to_currency(@item.price, unit: "¥", precision: 0) %> <%# 商品の価格をカンマ区切りで表示 %>
+  ¥ <%= number_to_currency(@item.price, unit: "", precision: 0) %> <%# 商品の価格をカンマ区切りで表示 %>
       </span>
       <span class="item-postage">
          <%= @item.shipping_fee.name %>
@@ -27,7 +27,7 @@
 
 <% if user_signed_in? %>
   <% if current_user.id == @item.user_id %>
-    <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
+    <%= link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-red-btn" %>
 
     <p class="or-text">or</p>
     <%= link_to "削除", "#", data: {turbo_method: :delete}, class:"item-destroy" %>
