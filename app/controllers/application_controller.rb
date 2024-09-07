@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
                                       keys: [:nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday])
   end
 
-  def after_sign_up_path_for(_resource)
+  def after_sign_in_path_for(_resource)
     items_path
   end
 end
