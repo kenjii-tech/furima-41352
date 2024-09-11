@@ -1,7 +1,6 @@
 class Formobject
   include ActiveModel::Model
-  attr_accessor :token, :user_id, :item_id, :post_code, :prefecture_id, :city, :street_address, :building_name, :phone_number,
-                :order_id
+  attr_accessor :token, :user_id, :item_id, :post_code, :prefecture_id, :city, :street_address, :building_name, :phone_number
 
   with_options presence: true do
     validates :user_id
