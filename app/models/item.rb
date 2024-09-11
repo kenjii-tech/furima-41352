@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   belongs_to :user
+  has_one :order
   has_one_attached :image
 
   belongs_to_active_hash :category
@@ -24,4 +25,8 @@ class Item < ApplicationRecord
     only_integer: true,
     message: 'must be between ¥300 and ¥9,999,999'
   }
+
+  def sold_out?
+    order.present?
+  end
 end

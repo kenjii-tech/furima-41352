@@ -1,13 +1,10 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
-
-  # skip_before_action :authenticate_user!, only: [:index]
-  before_action :ensure_correct_user, except: [:index, :show]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.with_attached_image.order(created_at: :desc)
-    # @items = Item.order(created_at: :desc)
   end
 
   def show
@@ -18,7 +15,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
+    @item = current_user.items.new(item_params)
     if @item.save
       redirect_to root_path, notice: '商品が出品されました'
     else
@@ -27,6 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path if @item.user_id != current_user.id || @item.sold_out?
   end
 
   def update
