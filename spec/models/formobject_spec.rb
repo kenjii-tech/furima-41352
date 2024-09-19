@@ -64,7 +64,7 @@ RSpec.describe Formobject, type: :model do
       it '番地が空の場合は無効である' do
         @formobject.city = nil
         @formobject.valid?
-        expect(@formobject.errors.full_messages).to include("City can't be blank")
+        expect(@formobject.errors.full_messages).to include("Street address can't be blank")
       end
 
       it '電話番号が空の場合は無効である' do
